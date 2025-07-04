@@ -36,10 +36,12 @@ steps:
     patchVersion: '0'
 
  
-- task: NuGetCommand@2
-  displayName: 'Publish NuGet package'
+- task: DotNetCoreCLI@2
+  displayName: 'Restore project dependencies'
   inputs:
-    command: push
-    feedPublish: '$(System.TeamProject)/Tailspin.SpaceGame.Web.Models'
-    allowPackageConflicts: true
+     command: restore
+     projects: '**/*.csproj'
+     feedsToUse: 'select'
+     feedPublish: '$(System.TeamProject)/Tailspin.SpaceGame.Web.Models'
+     allowPackageConflicts: true
   condition: succeeded()
