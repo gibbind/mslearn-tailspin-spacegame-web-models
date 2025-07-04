@@ -34,6 +34,9 @@ steps:
     majorVersion: '1'
     minorVersion: '0'
     patchVersion: '0'
+
+# Authenticate with NuGet to ensure credentials are refreshed
+- task: NuGetAuthenticate@1
  
 - task: NuGetCommand@2
   displayName: 'Publish NuGet package'
